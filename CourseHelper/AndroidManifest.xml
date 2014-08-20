@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.hunau.coursehelper"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="8"
+        android:targetSdkVersion="17" />
+       <!-- 允许使用网络-->
+       <uses-permission android:name="android.permission.INTERNET"/>
+      
+      <!-- 检测网络可用性 -->
+      <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+     
+      
+      <application
+        android:allowBackup="true"
+        android:icon="@drawable/logo"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name="com.hunau.activity.StartActivity"
+            android:label="@string/app_name"
+            android:theme="@android:style/Theme.Light.NoTitleBar" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        
+        <activity android:name="com.hunau.util_course.OneKeyGetCourse" 
+            android:label="@string/app_name"
+            ></activity>
+        <activity 
+             android:theme="@android:style/Theme.Light.NoTitleBar"
+             android:name="com.hunau.fragment.SlidingActivity" 
+            android:label="@string/app_name"
+            ></activity>
+        
+         <activity android:name="com.hunau.ui.ShowCourse"
+           android:label="your information"></activity>
+          
+         <activity android:name="com.hunau.ui.ShowGrade"
+             android:theme="@android:style/Theme.Light.NoTitleBar"></activity>
+         
+          <activity android:name="com.hunau.ui.ShowRank"
+             android:theme="@android:style/Theme.Light.NoTitleBar"></activity>
+         
+        <activity android:name="com.hunau.library.ShowBooks" 
+                  android:theme="@android:style/Theme.Light.NoTitleBar"
+               android:label="借阅信息"></activity>
+        <activity android:name="com.hunau.library.LibLogin" 
+                  android:theme="@android:style/Theme.Light.NoTitleBar"
+                  android:label="读者查询"
+               ></activity>
+        <activity android:name="com.hunau.ui.EditCourse" 
+                  android:theme="@android:style/Theme.Light.NoTitleBar"
+               ></activity>
+        
+    </application>
+
+</manifest>

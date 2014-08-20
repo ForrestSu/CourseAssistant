@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fff" >
+
+    <RelativeLayout
+        android:id="@+id/head_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="50sp"
+        android:background="@drawable/bar"
+        android:padding="5dip" >
+
+        
+        <!-- 添加登陆
+         <Button
+           android:id="@+id/showRight"
+           android:layout_width="wrap_content"
+           android:layout_height="fill_parent"
+           android:layout_alignParentRight="true"
+           android:layout_centerVertical="true"
+           android:background="@drawable/btn_add"/>
+            -->
+        <TextView 
+            android:id="@+id/coursetime"
+            android:layout_centerHorizontal="true" 
+            android:paddingTop="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/coursetime"
+            android:textSize="20dp"
+            android:textColor="#FFFFFF"
+            android:paddingBottom="4dp"
+            />
+        <Button
+           android:id="@+id/showLeft"
+           android:layout_width="wrap_content"
+           android:layout_height="fill_parent"
+           android:layout_alignParentBottom="true"
+           android:layout_alignParentLeft="true"
+           android:background="@drawable/showleft" />
+        
+      
+
+       
+
+    </RelativeLayout>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/head_layout"
+        android:background="#FFF" >
+    </android.support.v4.view.ViewPager>
+
+</RelativeLayout>

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+      <TextView
+        android:id="@+id/bar2"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bar"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:text="@string/borrowinfo"
+        android:textSize="22sp" />
+
+        <Button
+            android:id="@+id/btn"
+            android:layout_width="90dp"
+            android:layout_height="40dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/select"
+            android:gravity="center"
+            android:text="一键续借"
+            android:textSize="21sp" />
+
+    </RelativeLayout>
+       <LinearLayout
+            android:id="@+id/loading"
+            android:layout_width="fill_parent"
+            android:layout_height="30.0dip"
+            android:layout_marginTop="20.0dip"
+            android:gravity="center" >
+
+            <ProgressBar
+                style="@android:style/Widget.ProgressBar.Inverse"
+                android:layout_width="30.0dip"
+                android:layout_height="30.0dip" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:padding="3.0px"
+                android:text="正在检索图书..."
+                android:textColor="#ff000000"
+                android:textSize="16.0sp" />
+        </LinearLayout>
+    <!-- 一键续借 -->
+    
+  <TextView
+            android:id="@+id/booknum"
+            android:layout_width="228dp"
+            android:layout_height="35dp"
+            android:layout_toLeftOf="@+id/btn"
+            android:gravity="left|center"
+            android:textColor="#ff0000"
+            android:textSize="22sp" />
+    
+
+    <ListView
+        android:id="@+id/showbook"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+    </ListView>
+
+</LinearLayout>

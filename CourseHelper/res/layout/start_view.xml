@@ -1,0 +1,14 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/showcourse"
+    android:gravity="center" >
+
+    <ProgressBar
+        style="?android:progressBarStyleLarge"
+        android:layout_width="0.0dip"
+        android:layout_height="0dip"
+        android:layout_marginTop="30.0dip" />
+
+</LinearLayout>
