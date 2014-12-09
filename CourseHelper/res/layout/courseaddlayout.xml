@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/main_bg"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/main_bg"
+        android:orientation="horizontal" >
+
+        <FrameLayout
+            android:layout_width="@dimen/head_btn_width"
+            android:layout_height="@dimen/head_height" >
+
+            <ImageView
+                android:id="@+id/courseAddCancel"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="fitXY"
+                android:src="@drawable/cancel" />
+        </FrameLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#ffffff"
+            android:gravity="center"
+            android:text="编辑资料" />
+
+        <FrameLayout
+            android:layout_width="@dimen/head_btn_width"
+            android:layout_height="@dimen/head_height" >
+
+            <ImageView
+                android:id="@+id/courseAddOk"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="fitXY"
+                android:src="@drawable/ok" />
+        </FrameLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:clickable="true"
+            android:orientation="vertical" >
+
+            <RelativeLayout
+                android:id="@+id/mainListMsg"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/btnlistselector"
+                android:clickable="true" >
+
+                <ImageView
+                    android:id="@+id/ImageView05"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/widget_icon_class" />
+
+                <EditText
+                    android:id="@+id/courseName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@+id/ImageView05"
+                    android:hint="课程名称" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/btnlistselector"
+                android:clickable="true" >
+
+                <ImageView
+                    android:id="@+id/ImageViewTeacher"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/widget_icon_teacher" />
+
+                <EditText
+                    android:id="@+id/teacherName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@+id/ImageViewTeacher"
+                    android:hint="授课教师姓名" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/btnlistselector"
+                android:clickable="true" >
+
+                <ImageView
+                    android:id="@+id/ImageViewPlace"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/widget_icon_location" />
+
+                <EditText
+                    android:id="@+id/coursePlace"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@+id/ImageViewPlace"
+                    android:hint="上课地点" />
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/btnlistselector"
+                android:clickable="true" >
+
+                <ImageView
+                    android:id="@+id/ImageViewType"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/exam_add_icon_type" />
+                <Spinner
+                        android:id="@+id/spinnerType"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        style="@android:attr/spinnerDropDownItemStyle"
+                        android:layout_toRightOf="@+id/ImageViewType" />
+            </RelativeLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:clickable="true"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="40dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/btnlistselector"
+                android:gravity="center"
+                android:text="上课时间" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:orientation="vertical" >
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/btnlistselector"
+                    android:clickable="true" >
+
+                    <ImageView
+                        android:id="@+id/ImageViewexam"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/exam_add_icon_date_light" />
+
+                    <Spinner
+                        android:id="@+id/spinnerWeek"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        style="@android:attr/spinnerDropDownItemStyle"
+                        android:layout_toRightOf="@+id/ImageViewexam" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/btnlistselector"
+                    android:clickable="true" >
+
+                    <ImageView
+                        android:id="@+id/ImageViewDajie"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/exam_add_icon_time_light" />
+
+                    <Spinner
+                        android:id="@+id/spinnerFirstCourse"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        style="@android:attr/spinnerDropDownItemStyle"
+                        android:layout_toRightOf="@+id/ImageViewDajie" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/btnlistselector"
+                    android:clickable="true" >
+
+                    <ImageView
+                        android:id="@+id/ImageViewTime"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/widget_icon_location" />
+
+                    <EditText
+                        android:id="@+id/courseZC"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_toRightOf="@+id/ImageViewTime"
+                        android:hint="1-17周" />
+                </RelativeLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

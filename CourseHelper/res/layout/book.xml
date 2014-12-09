@@ -8,17 +8,15 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content" >
-
-      <TextView
-        android:id="@+id/bar2"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/bar"
-        android:gravity="center"
-        android:orientation="horizontal"
-        android:text="@string/borrowinfo"
-        android:textSize="22sp" />
-
+   
+        <TextView
+            android:id="@+id/booknum"
+            android:layout_width="228dp"
+            android:layout_height="35dp"
+            android:layout_toLeftOf="@+id/btn"
+            android:gravity="left|center"
+            android:textColor="#ff0000"
+            android:textSize="22sp" />
         <Button
             android:id="@+id/btn"
             android:layout_width="90dp"
@@ -53,15 +51,7 @@
                 android:textSize="16.0sp" />
         </LinearLayout>
     <!-- 一键续借 -->
-    
-  <TextView
-            android:id="@+id/booknum"
-            android:layout_width="228dp"
-            android:layout_height="35dp"
-            android:layout_toLeftOf="@+id/btn"
-            android:gravity="left|center"
-            android:textColor="#ff0000"
-            android:textSize="22sp" />
+ 
     
 
     <ListView

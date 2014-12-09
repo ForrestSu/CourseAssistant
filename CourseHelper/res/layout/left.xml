@@ -1,19 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/mlist"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:background="@color/bg_color_deep" >
-
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/main_bg" >
+    
     <LinearLayout
-        android:layout_width="240dp"
-        android:layout_height="fill_parent"
-        android:background="@color/bg_color_deep"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="20dp"
         android:orientation="vertical" >
-
         <RelativeLayout
-            android:layout_width="fill_parent"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+             android:background="@drawable/btnlistselector"
             android:padding="10dip" >
 
             <ImageView
@@ -21,7 +23,7 @@
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_marginRight="10dp"
-                android:background="@drawable/head_default" />
+                android:background="@drawable/menu_icon_profile" />
 
             <TextView
                 android:id="@+id/your_name"
@@ -33,7 +35,7 @@
                 android:layout_toRightOf="@+id/head_view"
                 android:text="NAME"
                 android:textColor="@color/black"
-                android:textSize="15sp" />
+                android:textSize="15dp" />
 
             <TextView
                 android:id="@+id/your_motto"
@@ -43,121 +45,304 @@
                 android:layout_alignLeft="@+id/your_name"
                 android:text="白天不懂夜的黑"
                 android:textColor="@color/text_color"
-                android:textSize="12sp" />
+                android:textSize="12dp" />
+            <TextView
+                android:id="@+id/login_logout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginBottom="2dp"
+                android:layout_marginTop="4dp"
+                android:text="@string/login"
+                android:textColor="@color/blue"
+                android:textSize="15dp" />
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/mainListMyCourse"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/btnlistselector"
+            android:clickable="true" >
 
+            <ImageView
+                android:id="@+id/ImageView05"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:src="@drawable/menu_icon_timetable" />
+
+            <TextView
+                android:id="@+id/TextView01"
+                style="@style/txtListStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/ImageView05"
+                android:text="我的课表" />
+
+            <TextView
+                android:id="@+id/TextView08"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:text="" />
         </RelativeLayout>
 
-        <include
-            android:layout_width="fill_parent"
-            android:layout_height="2px"
-            layout="@layout/line" >
-        </include>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1px"
+            android:clickable="true"
+            android:orientation="vertical" >
+            
+            <RelativeLayout
+                android:id="@+id/mainListLearnedCourse"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/btnlistselector"
+                android:clickable="true" >
 
-        <TextView
-            android:id="@+id/your_course"
-            android:layout_width="fill_parent"
-            android:layout_height="50dp"
-            android:gravity="center_vertical"
-            android:paddingLeft="20dp"
-            android:text="我的课表"
-            android:textColor="@color/text_color"
-            android:textSize="15sp" />
+                <ImageView
+                    android:id="@+id/ImageView03"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/menu_icon_course" />
 
-        <include
-            android:layout_width="fill_parent"
-            android:layout_height="2px"
-            layout="@layout/line" >
-        </include>
+                <TextView
+                    android:id="@+id/all_grade"
+                    style="@style/txtListStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@+id/ImageView03"
+                    android:text="已修课程" />
 
-        <TextView
-            android:id="@+id/your_exam"
-            android:layout_width="fill_parent"
-            android:layout_height="50dp"
-            android:gravity="center_vertical"
-            android:paddingLeft="20dp"
-            android:text="考试安排"
-            android:textColor="@color/text_color"
-            android:textSize="15sp" />
+                <TextView
+                    android:id="@+id/TextView04"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:text="NEW"
+                    android:textColor="#ff0000" />
+            </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/mainListGrade"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/btnlistselector"
+                android:clickable="true" >
 
-        <include
-            android:layout_width="fill_parent"
-            android:layout_height="2px"
-            layout="@layout/line" >
-        </include>
+                <ImageView
+                    android:id="@+id/ImageViewgrade"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/menu_icon_messagelist" />
 
-        <TextView
-            android:id="@+id/your_grade"
-            android:layout_width="fill_parent"
-            android:layout_height="50dp"
-            android:gravity="center_vertical"
-            android:paddingLeft="20dp"
-            android:text="我的成绩"
-            android:textColor="@color/text_color"
-            android:textSize="15sp" />
+                <TextView
+                    android:id="@+id/your_exam"
+                    style="@style/txtListStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@+id/ImageViewgrade"
+                    android:text="你的成绩" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:text=""
+                    android:textColor="#ff0000" />
+            </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/mainListRank"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/btnlistselector"
+                android:clickable="true" >
+
+                <ImageView
+                    android:id="@+id/ImageViewRank"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/menu_icon_rank" />
+
+                <TextView
+                    android:id="@+id/your_rank"
+                    style="@style/txtListStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@+id/ImageViewRank"
+                    android:text="成绩排名" />
+
+                <TextView
+                    android:id="@+id/TextViewRankMsg"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:text=""
+                    android:textColor="#ff0000" />
+            </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/mainListLibrary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/btnlistselector"
+                android:clickable="true" >
+
+                <ImageView
+                    android:id="@+id/ImageViewLibrary"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/menu_icon_library" />
+
+                <TextView
+                    android:id="@+id/your_library"
+                    style="@style/txtListStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@+id/ImageViewLibrary"
+                    android:text="已借图书" />
+
+                <TextView
+                    android:id="@+id/TextViewLibraryMsg"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:text=""
+                    android:textColor="#ff0000" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/mainListSetting"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/btnlistselector"
+                android:clickable="true" >
+
+                <ImageView
+                    android:id="@+id/ImageView02"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/menu_icon_friendlist" />
+
+                <TextView
+                    android:id="@+id/TextView03"
+                    style="@style/txtListStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@+id/ImageView02"
+                    android:text="关于我们" />
+
+                <TextView
+                    android:id="@+id/TextView02"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:text="" />
+            </RelativeLayout>
+        </LinearLayout>
+<!--  
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30px"
+            android:orientation="horizontal" >
+
+            <RelativeLayout
+                android:id="@+id/mainFuncTextTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="20px"
+                android:layout_weight="1"
+                android:background="@drawable/mainfuncshape"
+                android:clickable="true"
+                android:gravity="center" >
+
+                <TextView
+                    android:id="@+id/textView2"
+                    style="@style/txtMainFuncStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/image"
+                    android:text="考试倒计时" />
+
+                <ImageView
+                    android:id="@+id/image"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="20px"
+                    android:src="@drawable/menu_icon_widget_exam" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/mainFuncMap"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="20px"
+                android:layout_weight="1"
+                android:background="@drawable/mainfuncshape"
+                android:clickable="true"
+                android:gravity="center" >
+
+                <TextView
+                    android:id="@+id/textViewMap"
+                    style="@style/txtMainFuncStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/map"
+                    android:text="手绘地图" />
+
+                <ImageView
+                    android:id="@+id/map"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="10px"
+                    android:src="@drawable/menu_icon_widget_map" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/mainFuncShop"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10px"
+                android:layout_weight="1"
+                android:background="@drawable/mainfuncshape"
+                android:clickable="true"
+                android:gravity="center" >
+
+                <TextView
+                    android:id="@+id/textViewShop"
+                    style="@style/txtMainFuncStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/shop"
+                    android:text="贴图商店" />
+
+                <ImageView
+                    android:id="@+id/shop"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="10px"
+                    android:src="@drawable/menu_icon_widget_market" />
+            </RelativeLayout>
+        </LinearLayout>
+  -->      
         
-        
-        <include
-            android:layout_width="fill_parent"
-            android:layout_height="2px"
-            layout="@layout/line" >
-        </include>
-
-        <TextView
-            android:id="@+id/your_rank"
-            android:layout_width="fill_parent"
-            android:layout_height="50dp"
-            android:gravity="center_vertical"
-            android:paddingLeft="20dp"
-            android:text="成绩排名"
-            android:textColor="@color/text_color"
-            android:textSize="15sp" />
-
-        <include
-            android:layout_width="fill_parent"
-            android:layout_height="2px"
-            layout="@layout/line" >
-        </include>
-
-   <!--     <TextView
-            android:id="@+id/all_grade"
-            android:layout_width="fill_parent"
-            android:layout_height="50dp"
-            android:gravity="center_vertical"
-            android:paddingLeft="20dp"
-            android:text="已修课程"
-            android:textColor="@color/text_color"
-            android:textSize="15sp" />
-        <include
-            android:layout_width="fill_parent"
-            android:layout_height="2px"
-            layout="@layout/line" >
-        </include>
- --> 
-        <TextView
-            android:id="@+id/your_library"
-            android:layout_width="fill_parent"
-            android:layout_height="50dp"
-            android:gravity="center_vertical"
-            android:paddingLeft="20dp"
-            android:text="我的图书馆"
-            android:textColor="@color/text_color"
-            android:textSize="15sp" />
-
-         <include
-            android:layout_width="fill_parent"
-            android:layout_height="2px"
-            layout="@layout/line" >
-        </include>
-
-        <TextView
-            android:id="@+id/my_draft_box_textvie"
-            android:layout_width="fill_parent"
-            android:layout_height="50dp"
-            android:gravity="center_vertical"
-            android:paddingLeft="20dp"
-            android:text="关于我们"
-            android:textColor="@color/text_color"
-            android:textSize="15sp" />
     </LinearLayout>
 
-</ScrollView>
+</LinearLayout>

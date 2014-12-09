@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <com.hunau.imp.SyncHorizonScrollView
+            android:id="@+id/horizonScollviewOfCourse"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fadingEdge="none"
+            android:scrollbars="none" >
+
+            <com.hunau.imp.SyncScrollView
+                android:id="@+id/scollviewOfCourse"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fadingEdge="none"
+                android:scrollbars="none" >
+
+                <RelativeLayout
+                    android:id="@+id/relativeCourseContent"
+                    android:layout_width="@dimen/course_week_width"
+                    android:layout_height="@dimen/course_num_height" >
+                </RelativeLayout>
+            </com.hunau.imp.SyncScrollView>
+        </com.hunau.imp.SyncHorizonScrollView>
+
+        <com.hunau.imp.SyncHorizonScrollView
+            android:id="@+id/week"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fadingEdge="none"
+            android:scrollbars="none" >
+
+            <LinearLayout
+                android:id="@+id/linearLayout_gridtableLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+
+                <GridView
+                    android:id="@+id/gridWeek"
+                    android:layout_width="@dimen/course_week_width"
+                    android:layout_height="wrap_content"
+                    android:background="#B5B2B5"
+                    android:columnWidth="@dimen/course_week_width"
+                    android:gravity="center"
+                    android:horizontalSpacing="@dimen/spacing"
+                    android:numColumns="7"
+                    android:paddingStart="@dimen/course_num_width" >
+                </GridView>
+            </LinearLayout>
+        </com.hunau.imp.SyncHorizonScrollView>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <Button
+                android:layout_width="@dimen/course_num_width"
+                android:layout_height="@dimen/course_week_height"
+                android:background="#D6D7D6" />
+
+            <com.hunau.imp.SyncScrollView
+                android:id="@+id/courseNum"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:fadingEdge="none" 
+                android:scrollbars="none">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" >
+
+                    <GridView
+                        android:id="@+id/gridCourseNum"
+                        android:layout_width="@dimen/course_num_width"
+                        android:layout_height="@dimen/course_num_height"
+                        android:background="#B5B2B5"
+                        android:columnWidth="@dimen/course_num_width"
+                        android:gravity="center"
+                        android:verticalSpacing="@dimen/spacing"
+                        android:numColumns="1">
+                    </GridView>
+                </LinearLayout>
+            </com.hunau.imp.SyncScrollView>
+        </LinearLayout>
+        <ImageView
+            android:id="@+id/addcourse"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center_horizontal"
+            android:src="@drawable/keyboard_button_pressed" >
+        </ImageView>
+       
+    </FrameLayout>
+
+</LinearLayout>

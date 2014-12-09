@@ -29,11 +29,28 @@
     <!-- Application theme. -->
     <style name="AppTheme" parent="AppBaseTheme">
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+        <item name="android:windowNoTitle">true</item>
     </style>
    <!-- mytheme notitle. -->
     <style name="notitle">
         <item name="android:windowNoTitle">true</item>
     </style> 
+    
+   <style name="txtListStyle">
+        <item name="android:textSize">15sp</item>
+        <item name="android:paddingLeft">20dp</item>
+    </style>
+
+    <style name="txtMainFuncStyle">
+        <item name="android:textSize">17px</item>
+        <item name="android:textColor">#ffffff</item>
+    </style>
+
+    <style name="txtMainFuncStyle2">
+        <item name="android:textSize">30px</item>
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:paddingLeft">15px</item>
+    </style>
 
 
 </resources>

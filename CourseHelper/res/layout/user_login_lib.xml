@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+ >
+
+        <EditText
+            android:id="@+id/name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:ems="9"
+            android:hint="@string/studentnumber"
+            android:inputType="number"/>"
+        <EditText
+            android:id="@+id/pass"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/name"
+            android:layout_alignRight="@+id/name"
+            android:layout_below="@+id/name"
+            android:layout_centerHorizontal="true"
+            android:hint="@string/studentpassword"
+            android:inputType="numberPassword"/>"
+        <Button
+            android:id="@+id/submit"
+            android:layout_width="100sp"
+            android:layout_height="40sp"
+            android:layout_below="@+id/pass"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/select"
+            android:text="@string/login"
+            android:textSize="22sp" />
+
+</RelativeLayout>
