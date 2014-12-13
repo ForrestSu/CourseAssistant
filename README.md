@@ -1,5 +1,8 @@
 CourseAssistant
 ===============
+   This project why reduce ?
+   It's one year ago(2013/10/01), I wan't a Convenient tool can get my borrow book record at any time.
+   And now,I exactly learned some knowledge about  Android. So I start this project.
 ## 版本更新
 
 
@@ -13,4 +16,5 @@ CourseAssistant
   HTTP 模拟登陆校园网，提交数据，
   
   
-
+### version 1.0
+  简单实现了一键获取课表，查阅借阅的书籍，以及一键续借等功能。
