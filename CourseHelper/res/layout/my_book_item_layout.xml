@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="39dp" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/book_margin"
+            android:layout_marginTop="@dimen/book_margin"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/book_name"
+                android:layout_width="match_parent"
+                android:layout_height="26dp"
+                android:layout_weight="1"
+                android:background="@color/title_background"
+                android:gravity="left"
+                android:singleLine="true"
+                android:text="t11"
+                android:textSize="@dimen/text_small_size" />
+
+            <TextView
+                android:id="@+id/surplus_time"
+                android:layout_width="match_parent"
+                android:layout_height="26dp"
+                android:layout_weight="4"
+                android:background="@color/white"
+                android:gravity="center_horizontal"
+                android:singleLine="true"
+                android:text="t11"
+                android:textColor="@color/red"
+                android:textSize="@dimen/text_small_size" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/serial"
+            android:layout_width="26dp"
+            android:layout_height="26dp"
+            android:layout_gravity="top|left"
+            android:background="@drawable/top_number_background"
+            android:gravity="center"
+            android:text="1" />
+    </FrameLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="@dimen/book_margin"
+        android:background="@color/border_color" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/book_margin"
+        android:background="@color/border_color"
+        android:orientation="horizontal" >
+
+        <ImageView
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="@color/border_color" />
+
+        <GridView
+            android:id="@+id/left_title"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/book_hight"
+            android:layout_weight="4"
+            android:columnWidth="@dimen/book_item_hight"
+            android:gravity="center"
+            android:numColumns="1"
+            android:scrollbars="none"
+            android:verticalSpacing="1dp" >
+        </GridView>
+
+        <ImageView
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="@color/border_color" />
+
+        <GridView
+            android:id="@+id/right_content"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/book_hight"
+            android:layout_weight="1"
+            android:columnWidth="@dimen/book_item_hight"
+            android:gravity="left"
+            android:numColumns="1"
+            android:scrollbars="none"
+            android:verticalSpacing="1dp" >
+        </GridView>
+
+        <ImageView
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="@color/border_color" />
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,6 +1,12 @@
 package com.hunau.dao;
 
-public class BookInfo {
+import java.io.Serializable;
+
+public class BookInfo implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String code;   // 单册条码
 	private String name;   //正 题 名
 	private String author; //作者

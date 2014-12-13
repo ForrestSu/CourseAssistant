@@ -1,5 +1,17 @@
 <resources>
-
+    
+    <!--全局设置三种字体样式  -->
+    <dimen name="text_small_size">15sp</dimen>
+    <dimen name="text_middle_size">18sp</dimen>
+    <dimen name="text_big_size">22sp</dimen>
+    <!-- 全局设定边距 -->
+    <dimen name="margin_left">8dp</dimen>
+    <dimen name="margin_right">8dp</dimen>
+    <dimen name="margin_bottom">8dp</dimen>
+     <dimen name="margin_top">8dp</dimen>
+     
+     <!-- 图书显示边距 -->
+   <dimen name="book_margin">13dp</dimen>
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
@@ -14,11 +26,15 @@
     <dimen name="course_week_width">580dp</dimen>
     <dimen name="course_week_height">20dp</dimen>
     <dimen name="course_week_item_width">80dp</dimen>
-    
     <dimen name="course_num_width">20dp</dimen>
     <dimen name="course_num_height">730dp</dimen>
     <dimen name="course_num_item_height">60dp</dimen>
+
     
+    <!-- 书本项的宽度-->
+     <dimen name="book_item_hight">22dp</dimen>
+      <dimen name="book_hight">230dp</dimen>
     <!-- 行间距 最好用像素表示 -->
     <dimen name="spacing">1px</dimen>
+
 </resources>

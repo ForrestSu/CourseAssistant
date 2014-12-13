@@ -4,11 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.hunau.activity.MyCourseAddActivity;
+import com.hunau.activity.MyCourseShowActivity;
 import com.hunau.coursehelper.R;
 import com.hunau.dao.Course;
 import com.hunau.db.DBManager;
 import com.hunau.imp.SyncHorizonScrollView;
 import com.hunau.imp.SyncScrollView;
+import com.slidingmenu.main.MainMenuSlidingActivity;
 
 import android.app.Activity;
 import android.app.Fragment;
@@ -26,6 +28,7 @@ import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
+
 public class FragmentCourse extends Fragment implements
 		MyCourseAddActivity.courseContent {
 
@@ -34,7 +37,6 @@ public class FragmentCourse extends Fragment implements
 	private RelativeLayout courseContent;
 	private DBManager dbManager;
 	private List<Course> courses = new ArrayList<Course>();
-
 	@Override
 	public void onAttach(Activity activity) {
 		// TODO Auto-generated method stub
@@ -50,9 +52,18 @@ public class FragmentCourse extends Fragment implements
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-		// TODO Auto-generated method stub
 		View view = inflater.inflate(R.layout.mycourselayout, null);
+		// 设置菜单按钮
+		ImageView broadSideBtn = (ImageView) view.findViewById(R.id.showleft);
+		broadSideBtn.setOnClickListener(new OnClickListener() {
 
+			@Override
+			public void onClick(View arg0) {
+				// TODO Auto-generated method stub
+				MainMenuSlidingActivity ac = (MainMenuSlidingActivity) getActivity();
+				ac.toggle();
+			}
+		});
 		// 获取数据
 		dbManager = new DBManager(getActivity());
 		courses = dbManager.queryAllCourses();
@@ -84,8 +95,7 @@ public class FragmentCourse extends Fragment implements
 				R.layout.coursenumstyle, courseNums);
 		courseNum.setAdapter(leftAdap);
 
-		courseContent = (RelativeLayout) view
-				.findViewById(R.id.relativeCourseContent);
+		courseContent = (RelativeLayout) view.findViewById(R.id.relativeCourseContent);
 		ShowCourse();
 		// Button course = createCourse(3, 1, 2, "高等数学@35-102");
 		// Button course2 = createCourse(1, 2, 3, "android@36-111");
@@ -115,13 +125,13 @@ public class FragmentCourse extends Fragment implements
 		if (courses != null)
 			for (Course c : courses) {
 				setCourseContent(c.getCourseWeek(), c.getCourseJs() * 2 - 1,
-						c.getCourseJs() * 2, c.toString());
+						c.getCourseJs() * 2, c );
 			}
 	}
 
 	// 创建课程
 	private Button createCourse(int week, int firstCourseNum,
-			int lastCourseNum, String content) {
+			int lastCourseNum,final Course c) {
 		// 左边距
 		int leftMargin = 0;
 		// 上边距
@@ -162,47 +172,51 @@ public class FragmentCourse extends Fragment implements
 		course.setGravity(Gravity.CENTER);
 		course.setWidth(courseWidth);
 		course.setHeight(courseLength);
-		course.setBackgroundColor(getResources().getColor(R.color.courseNow));
-		course.setText(content);
+		course.setBackgroundColor(getResources().getColor(R.color.courseColor));
+		course.setText(c.toString());
 		course.setTextSize(15);
 		course.setTextColor(Color.WHITE);
+		course.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				Intent intent=new Intent();
+				intent.setClass(getActivity(), MyCourseShowActivity.class);
+				intent.putExtra("course", c);
+				startActivityForResult(intent,2);	 
+			}
+		});
 		return course;
 	}
+	
+
 
 	@Override
 	public void setCourseContent(int week, int firstCourseNum,
-			int lastCourseNum, String content) {
+			int lastCourseNum,Course c) {
 		// TODO Auto-generated method stub
-		Button course = createCourse(week, firstCourseNum, lastCourseNum,
-				content);
+		Button course = createCourse(week, firstCourseNum, lastCourseNum,c );
 		courseContent.addView(course);
-		
+		//courseContent.invalidate(true);
+	
 	}
-	//courseContent.removeView(view);
+
+	// courseContent.removeView(view);
 
 	public void Update(Course c) {
 
 		View view = courseContent.findViewWithTag(c.toTag());
-		if (view == null) {
-			setCourseContent(c.getCourseWeek(), c.getCourseJs() * 2 - 1,
-					c.getCourseJs() * 2, c.toString());
-		} else {
-			if (view instanceof Button) {
-				Button bt = (Button) view;
-				bt.setText(c.toString());
-			}
-		}
+		if (view !=null) courseContent.removeView(view);
+		setCourseContent(c.getCourseWeek(), c.getCourseJs() * 2 - 1,c.getCourseJs() * 2, c);
 	}
 
 	@Override
 	public void onActivityResult(int requestCode, int resultCode, Intent data) {
 		// TODO Auto-generated method stub
-	//	super.onActivityResult(requestCode, resultCode, data);
-		if(resultCode==1)
-		{
-		Course course = (Course) data.getSerializableExtra("course");
-		Update(course);
-		
+		// super.onActivityResult(requestCode, resultCode, data);
+		if (resultCode == 1||resultCode == 2) {//新增课程
+			Course course = (Course) data.getSerializableExtra("course");
+			Update(course);
 		}
 	}
 

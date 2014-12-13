@@ -1,84 +1,114 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/bg_color" >
+    android:layout_height="match_parent" 
+    android:orientation="vertical">
 
-    <EditText
-        android:id="@+id/studentnumber"
-        android:layout_width="wrap_content"
+    <RelativeLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
-        android:ems="9"
-        android:hint="@string/studentnumber"
-        android:inputType="number" />
+        android:background="@color/main_bg"
+        android:orientation="horizontal" >
 
-    <EditText
-        android:id="@+id/studentpassword"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/studentnumber"
-        android:layout_alignRight="@+id/studentnumber"
-        android:layout_below="@+id/studentnumber"
-        android:layout_marginTop="10dp"
-        android:hint="@string/studentpassword"
-        android:inputType="textPassword" />
-
-    <Spinner
-        android:id="@+id/spinner1"
-        style="@android:attr/spinnerDropDownItemStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@+id/studentpassword"
-        android:layout_marginTop="5dp"/>
-
-    <Button
-        android:id="@+id/login"
-        android:layout_width="100sp"
-        android:layout_height="40sp"
-        android:layout_below="@+id/studentpassword"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="60dp"
-        android:background="@drawable/select"
-        android:text="@string/login"
-        android:textSize="22sp" />
-
-    <LinearLayout
-        android:id="@+id/loading"
-        android:layout_width="fill_parent"
-        android:layout_height="30dp"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/login"
-        android:layout_marginTop="22dp"
-        android:gravity="center" >
-
-        <ProgressBar
-            style="@android:style/Widget.ProgressBar.Inverse"
-            android:layout_width="30dp"
-            android:layout_height="30dp" />
+        <ImageView
+            android:id="@+id/showleft"
+            android:layout_width="@dimen/head_btn_width"
+            android:layout_height="@dimen/head_height"
+            android:layout_centerVertical="true"
+            android:contentDescription="@string/back"
+            android:src="@drawable/top_showleft" />
 
         <TextView
+            android:id="@+id/title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:text="@string/title_coursetime"
+            android:textSize="20sp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/bg_color" >
+
+        <EditText
+            android:id="@+id/studentnumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:ems="9"
+            android:hint="@string/studentnumber"
+            android:inputType="number" />
+
+        <EditText
+            android:id="@+id/studentpassword"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/studentnumber"
+            android:layout_alignRight="@+id/studentnumber"
+            android:layout_below="@+id/studentnumber"
+            android:layout_marginTop="10dp"
+            android:hint="@string/studentpassword"
+            android:inputType="textPassword" />
+
+        <Spinner
+            android:id="@+id/spinner1"
+            style="@android:attr/spinnerDropDownItemStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/studentpassword"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="5dp" />
+
+        <Button
+            android:id="@+id/login"
+            android:layout_width="100sp"
+            android:layout_height="40sp"
+            android:layout_below="@+id/spinner1"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/select"
+            android:text="@string/login"
+            android:textSize="22sp" />
+
+        <LinearLayout
+            android:id="@+id/loading"
+            android:layout_width="fill_parent"
+            android:layout_height="30dp"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/login"
+            android:layout_marginTop="22dp"
+            android:gravity="center" >
+
+            <ProgressBar
+                style="@android:style/Widget.ProgressBar.Inverse"
+                android:layout_width="30dp"
+                android:layout_height="30dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:padding="3.0px"
+                android:text="@string/running"
+                android:textColor="#ff000000"
+                android:textSize="16.0sp" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/state"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/login"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="22dp"
             android:gravity="center"
-            android:padding="3.0px"
-            android:text="@string/running"
-            android:textColor="#ff000000"
-            android:textSize="16.0sp" />
-    </LinearLayout>
+            android:textColor="@color/warn"
+            android:textSize="16sp" />
+    </RelativeLayout>
 
-    <TextView
-        android:id="@+id/state"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/login"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="22dp"
-        android:gravity="center"
-        android:textSize="16sp"
-        android:textColor="@color/warn"/>
-
-</RelativeLayout>
+</LinearLayout>

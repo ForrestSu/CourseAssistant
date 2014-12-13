@@ -7,7 +7,7 @@ public interface HunauURL {
 	 * 	外网
 	 */
 	//课程
-	public static final String[] COURSE_LOGIN={
+	public static final String[] LOGIN={
 		"http://172.28.89.32/loginAction.do",
 		"http://220.169.45.174/loginAction.do"
 	};	
@@ -32,6 +32,21 @@ public interface HunauURL {
 		"http://172.28.89.30:7777/pls/wwwbks/bkscjcx.cursco",
 		"http://220.169.45.173:7777/pls/wwwbks/bkscjcx.cursco"
 	};
+	//评教
+	public static final String[] URL_ASSESS_TEACHER_LIST={
+		"http://172.28.89.32/roamingAction.do?appId=BKS_JXPG"
+	};
+	public static final String[] URL_ASSESS_TEACHER_TABLE={
+		"http://172.28.89.30:8088/jxpg/list_wj.jsp"
+	};
+	//一键评教
+	public static final String[] URL_ASSESS_TEACHER_SEND_BEFORE={
+		"http://172.28.89.30:8088/jxpg/pg.jsp?wj_num="
+	};
+	public static final String[] URL_ASSESS_TEACHER_SEND={
+		"http://172.28.89.30:8088/jxpg/answer.jsp?wj_num="
+	};
+	
 	
 	// 公网ip：220.169.45.174
 //	public static final String url_grade_list = "http://220.169.45.174/roamingAction.do?appId=BKS_CJCX";
@@ -49,4 +64,8 @@ public interface HunauURL {
 	
 	
 	public static final String[] COURSE_TYPE={"必修","选修" ,"限选","其他"};
+	
+	//public static final String[] COURSE_TYPE={"必修","选修" ,"限选","其他"};
+	
+	
 }

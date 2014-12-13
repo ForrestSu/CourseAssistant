@@ -15,55 +15,34 @@ public class SimuLogin {
 	public String cookieVal = null;
 
 
-	/** 第一次访问网络
-	 * @param urladdress  url
-	 * @param sendmsg
-	 */
-	public void login(String urladdress, String sendmsg)  {
-		URL url;
-		try {
-			url = new URL(urladdress);
-			HttpURLConnection con = (HttpURLConnection) url.openConnection();
-			con.setDoOutput(true);
-			con.setRequestMethod("POST");
-			// 别超过6秒
-			con.setConnectTimeout(6 * 1000);
-			OutputStream out = con.getOutputStream();
-			out.write(sendmsg.getBytes("GBK"));
-			out.close();
-			con.connect();
-			cookieVal = con.getHeaderField("Set-Cookie");
-			con.disconnect();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
-	/**第二次访问网络
+	/** 访问网络
 	 * @param urladdress  url
 	 * @param sendmsg     发送的消息，为空则不发
 	 * @param isSaveCookie  是否保存cookie
 	 * @return  返回InputStream
 	 */
-	public InputStream login(String urladdress,String sendmsg,boolean isSaveCookie) {
+	public String login(String urladdress,String sendmsg,boolean isSaveCookie) {
 		try {
-			if(cookieVal==null){return null;}
+			 
 			URL url = new URL(urladdress);
 		    HttpURLConnection con= (HttpURLConnection) url.openConnection();
-		    con.setRequestProperty("Cookie", cookieVal);
+		    if(cookieVal!=null)con.setRequestProperty("Cookie", cookieVal);
+		    con.setRequestProperty("User-agent","Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.1; WOW64; Trident/7.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0; InfoPath.3; .NET4.0C; .NET4.0E; Shuame)");
 		    // 别超过5秒
 		    con.setConnectTimeout(5 * 1000);
+		    con.setReadTimeout(5 * 1000);
 		    OutputStream out=null;
 		    if(sendmsg!=null)
 		    {
 		    	con.setDoOutput(true);
 		    	out = con.getOutputStream();
-				out.write(sendmsg.getBytes("GBK"));
+		    	byte[] b=sendmsg.getBytes("GBK");
+				out.write(b);
 				out.close();
 		    }
 		    con.connect();
 		    if(isSaveCookie)cookieVal = con.getHeaderField("Set-Cookie");
-			InputStream in =con.getInputStream();
-		    return in;
+		    return getContent(con.getInputStream());
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
@@ -76,18 +55,21 @@ public class SimuLogin {
 		String line, ret;
 		try {
 			BufferedReader br = new BufferedReader(new InputStreamReader(in,"GBK"));
+			ret ="";
 			line = br.readLine();
-			ret = line;
 			while (line != null) {
-				line = br.readLine();
 				ret += line;
+				line = br.readLine();
 			}
-			if (in != null)
-				in.close();
+			if (in != null)in.close();
 			return ret;
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		return null;
+	}
+	public boolean isLoginFail(String html,String tag)
+	{   if(html==null)return false;//说明不是账号或者密码错
+		return html.contains(tag);
 	}
 }

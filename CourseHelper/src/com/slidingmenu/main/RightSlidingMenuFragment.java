@@ -21,7 +21,7 @@ public class RightSlidingMenuFragment extends Fragment implements OnClickListene
      @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
     		Bundle savedInstanceState) {
-    	 View view = inflater.inflate(R.layout.left, container,
+    	 View view = inflater.inflate(R.layout.main_left_menu_layout, container,
  				false);
  
     	 
@@ -40,7 +40,7 @@ public class RightSlidingMenuFragment extends Fragment implements OnClickListene
 	private void switchFragment(Fragment fragment) {
 		if (getActivity() == null)
 			return;	
-		MainSlidingActivity ra = (MainSlidingActivity) getActivity();
+		MainMenuSlidingActivity ra = (MainMenuSlidingActivity) getActivity();
 		//	ra.switchContent(fragment);
 		
 	}

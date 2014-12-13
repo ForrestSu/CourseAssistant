@@ -1,0 +1,342 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/main_bg" >
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="20dp"
+        android:orientation="vertical" >
+        <RelativeLayout
+            android:id="@+id/mainPageUserInfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/btnlistselector"
+            android:padding="10dip" >
+
+            <ImageView
+                android:id="@+id/head_view"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginRight="10dp"
+                android:src="@drawable/menu_icon_profile" />
+
+            <TextView
+                android:id="@+id/your_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginBottom="2dp"
+                android:layout_marginTop="4dp"
+                android:layout_toRightOf="@+id/head_view"
+                android:text="姓名"
+                android:textColor="@color/black"
+                android:textSize="15dp" />
+
+            <TextView
+                android:id="@+id/your_motto"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/head_view"
+                android:layout_alignLeft="@+id/your_name"
+                android:text="@string/motto"
+                android:textColor="@color/text_color"
+                android:textSize="12dp" />
+            <ImageView
+                android:id="@+id/login_logout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginBottom="2dp"
+                android:layout_marginTop="4dp"
+                android:src="@drawable/top_login"/>
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/mainPageCourse"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/btnlistselector"
+            android:clickable="true" >
+
+            <ImageView
+                android:id="@+id/ImageView05"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:src="@drawable/menu_icon_timetable" />
+
+            <TextView
+                android:id="@+id/TextView01"
+                style="@style/txtListStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/ImageView05"
+                android:text="我的课表" />
+
+            <TextView
+                android:id="@+id/TextView08"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:text="" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1px"
+            android:clickable="true"
+            android:orientation="vertical" >
+            
+            <RelativeLayout
+                android:id="@+id/mainPageLearnedCourse"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/btnlistselector"
+                android:clickable="true" >
+
+                <ImageView
+                    android:id="@+id/ImageView03"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/menu_icon_course" />
+
+                <TextView
+                    android:id="@+id/all_grade"
+                    style="@style/txtListStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@+id/ImageView03"
+                    android:text="已修课程" />
+
+                <TextView
+                    android:id="@+id/TextView04"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:text="NEW"
+                    android:textColor="#ff0000" />
+            </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/mainPageGrade"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/btnlistselector"
+                android:clickable="true" >
+
+                <ImageView
+                    android:id="@+id/ImageViewgrade"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/menu_icon_grade" />
+
+                <TextView
+                    android:id="@+id/your_exam"
+                    style="@style/txtListStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@+id/ImageViewgrade"
+                    android:text="本学期成绩" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:text="NEW"
+                    android:textColor="#ff0000" />
+            </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/mainPageRank"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/btnlistselector"
+                android:clickable="true" >
+
+                <ImageView
+                    android:id="@+id/ImageViewRank"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/menu_icon_rank" />
+
+                <TextView
+                    android:id="@+id/your_rank"
+                    style="@style/txtListStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@+id/ImageViewRank"
+                    android:text="成绩排名" />
+
+                <TextView
+                    android:id="@+id/TextViewRankMsg"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:text="NEW"
+                    android:textColor="#ff0000" />
+            </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/mainPageLibrary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/btnlistselector"
+                android:clickable="true" >
+
+                <ImageView
+                    android:id="@+id/ImageViewLibrary"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/menu_icon_library" />
+
+                <TextView
+                    android:id="@+id/your_library"
+                    style="@style/txtListStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@+id/ImageViewLibrary"
+                    android:text="读者查询" />
+
+                <TextView
+                    android:id="@+id/TextViewLibraryMsg"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:text=""
+                    android:textColor="#ff0000" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/mainPageAboutUs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/btnlistselector"
+                android:clickable="true" >
+
+                <ImageView
+                    android:id="@+id/ImageView02"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/menu_icon_friendlist" />
+
+                <TextView
+                    android:id="@+id/TextView03"
+                    style="@style/txtListStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@+id/ImageView02"
+                    android:text="关于我们" />
+
+                <TextView
+                    android:id="@+id/TextView02"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:text="" />
+            </RelativeLayout>
+        </LinearLayout>
+ 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:orientation="horizontal" >
+
+            <RelativeLayout
+                android:id="@+id/mainFuncAssessTeacher"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/mainfuncshape"
+                android:clickable="true"
+                android:gravity="center" >
+
+                <ImageView
+                    android:id="@+id/image"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="8dp"
+                    android:src="@drawable/finger_assess_teacher" />
+                <TextView
+                    android:id="@+id/textView2"
+                    style="@style/txtMainFuncStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/image"
+                    android:text="一键评教" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/mainFuncMap"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/mainfuncshape"
+                android:clickable="true"
+                android:gravity="center" >
+
+                <TextView
+                    android:id="@+id/textViewMap"
+                    style="@style/txtMainFuncStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/map"
+                    android:text="寝室电费查询" />
+
+                <ImageView
+                    android:id="@+id/map"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="10dp"
+                    android:src="@drawable/menu_icon_widget_power" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/mainFuncShop"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/mainfuncshape"
+                android:clickable="true"
+                android:gravity="center" >
+
+                <TextView
+                    android:id="@+id/textViewShop"
+                    style="@style/txtMainFuncStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/exam"
+                    android:text="考试倒计时" />
+
+               <ImageView
+                    android:id="@+id/exam"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="10dp"
+                    android:src="@drawable/menu_icon_widget_exam" />
+            </RelativeLayout>
+        </LinearLayout>
+
+        
+    </LinearLayout>
+
+</LinearLayout>

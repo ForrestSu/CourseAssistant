@@ -2,7 +2,7 @@ package com.hunau.activity;
 
 
 import com.hunau.coursehelper.R;
-import com.slidingmenu.main.MainSlidingActivity;
+import com.slidingmenu.main.MainMenuSlidingActivity;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -21,7 +21,7 @@ public class StartActivity extends Activity {
 	class GotoMainView implements Runnable{
 		@Override
 		public void run() {
-			Intent intent = new Intent(StartActivity.this, MainSlidingActivity.class);
+			Intent intent = new Intent(StartActivity.this, MainMenuSlidingActivity.class);
 			StartActivity.this.startActivity(intent);
 			StartActivity.this.finish();
 		}

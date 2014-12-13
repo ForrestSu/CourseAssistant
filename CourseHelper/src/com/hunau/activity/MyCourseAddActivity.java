@@ -19,24 +19,29 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 public class MyCourseAddActivity extends Activity implements OnClickListener {
-	
-	private static final String[] DAJIE = {"第一大节","第二大节","第三大节","第四大节","第五大节"};
-	private static final String[] WEEK = {"星期一","星期二","星期三","星期四","星期五","星期六","星期日"};
-	private int week,dajie,type;
+
+	private static final String[] DAJIE = { "第一大节", "第二大节", "第三大节", "第四大节",
+			"第五大节" };
+	private static final String[] WEEK = { "星期一", "星期二", "星期三", "星期四", "星期五",
+			"星期六", "星期日" };
+	private static final String[] TYPE = { "必修", "选修", "限选", "其他" };
+	private int week, dajie, type;
 	private EditText courseName;
 	private EditText teacherName;
 	private EditText coursePlace;
 	private EditText courseZC;
 	private Spinner spinnerWeek;
 	private Spinner spinnerFirstCourse;
+	private Spinner spinnerType;
 	private DBManager dbManager;
+
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.courseaddlayout);
-		//初始化控件
-		dbManager=new DBManager(this);
+		// 初始化控件
+		dbManager = new DBManager(this);
 		init();
 	}
 
@@ -47,44 +52,66 @@ public class MyCourseAddActivity extends Activity implements OnClickListener {
 		courseAddCancel.setOnClickListener(this);
 		courseAddOk.setOnClickListener(this);
 		// 获取内容
-		
+
 		courseName = (EditText) findViewById(R.id.courseName);
 		teacherName = (EditText) findViewById(R.id.teacherName);
 		coursePlace = (EditText) findViewById(R.id.coursePlace);
-		courseZC=(EditText) findViewById(R.id.courseZC);
+		courseZC = (EditText) findViewById(R.id.courseZC);
+
+		spinnerType = (Spinner) findViewById(R.id.spinnerType);
 		spinnerWeek = (Spinner) findViewById(R.id.spinnerWeek);
 		spinnerFirstCourse = (Spinner) findViewById(R.id.spinnerFirstCourse);
-	   // 设置星期几
-		ArrayAdapter<String> adapter1= new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item,WEEK);
+
+		// 设置考试类型
+		ArrayAdapter<String> adapter0 = new ArrayAdapter<String>(this,
+				android.R.layout.simple_spinner_item, TYPE);
+		adapter0.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+		spinnerType.setAdapter(adapter0);
+		spinnerType.setOnItemSelectedListener(new OnItemSelectedListener() {
+			@Override
+			public void onItemSelected(AdapterView<?> parent, View view,
+					int position, long id) {
+				type = position;
+			}
+			@Override
+			public void onNothingSelected(AdapterView<?> parent) {}
+		});
+		// 设置星期几
+		ArrayAdapter<String> adapter1 = new ArrayAdapter<String>(this,
+				android.R.layout.simple_spinner_item, WEEK);
 		adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		spinnerWeek.setAdapter(adapter1);
 		spinnerWeek.setOnItemSelectedListener(new OnItemSelectedListener() {
 			@Override
 			public void onItemSelected(AdapterView<?> parent, View view,
 					int position, long id) {
-				   week=position+1;
+				week = position + 1;
 			}
+
 			@Override
 			public void onNothingSelected(AdapterView<?> parent) {
-				
+
 			}
 		});
-		//设置第几大节
-		ArrayAdapter<String> adapter2= new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item,DAJIE);
+		// 设置第几大节
+		ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(this,
+				android.R.layout.simple_spinner_item, DAJIE);
 		adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		spinnerFirstCourse.setAdapter(adapter2);
-		spinnerFirstCourse.setOnItemSelectedListener(new OnItemSelectedListener() {
-			@Override
-			public void onItemSelected(AdapterView<?> parent, View view,
-					int position, long id) {
-				   dajie=position+1;
-			}
-			@Override
-			public void onNothingSelected(AdapterView<?> parent) {
-				
-			}
-		});
-		
+		spinnerFirstCourse
+				.setOnItemSelectedListener(new OnItemSelectedListener() {
+					@Override
+					public void onItemSelected(AdapterView<?> parent,
+							View view, int position, long id) {
+						dajie = position + 1;
+					}
+
+					@Override
+					public void onNothingSelected(AdapterView<?> parent) {
+
+					}
+				});
+
 	}
 
 	@Override
@@ -92,46 +119,56 @@ public class MyCourseAddActivity extends Activity implements OnClickListener {
 		switch (v.getId()) {
 		case R.id.courseAddCancel:
 			this.finish();
+			// 设置动画
+			overridePendingTransition(R.anim.layout_in_fromleft,
+								R.anim.layout_out_fromleft);
 			break;
 		case R.id.courseAddOk:
-			String cname=courseName.getText().toString();
-			if(cname==null||cname.length()<2)
-			{
-				Toast.makeText(this,getResources().getString(R.string.add_course_name_null), Toast.LENGTH_LONG).show();
+			String cname = courseName.getText().toString();
+			if (cname == null || cname.length() < 2) {
+				Toast.makeText(
+						this,
+						getResources().getString(R.string.add_course_name_null),
+						Toast.LENGTH_LONG).show();
 				courseName.setFocusable(true);
 				break;
 			}
-			String tname=teacherName.getText().toString();
-			if(tname==null||tname.length()<2)
-			{
-				Toast.makeText(this,getResources().getString(R.string.add_course_teacher_null), Toast.LENGTH_LONG).show();
+			String tname = teacherName.getText().toString();
+			if (tname == null || tname.length() < 2) {
+				Toast.makeText(
+						this,
+						getResources().getString(
+								R.string.add_course_teacher_null),
+						Toast.LENGTH_LONG).show();
 				teacherName.setFocusable(true);
 				break;
 			}
-			String place=coursePlace.getText().toString();
-			String cZC=courseZC.getText().toString();
-			Course c=new Course();
-			 //设置课程名
+			String place = coursePlace.getText().toString();
+			String cZC = courseZC.getText().toString();
+			Course c = new Course();
+			// 设置课程名
 			c.setCourseName(cname);
 			c.setTeacher(tname);
 			c.setPlace(place);
+			c.setType(type);
 			c.setCourseWeek(week);
 			c.setCourseJs(dajie);
 			c.setCourseZc(cZC);
-			//添加一节课
+			// 添加一节课
 			dbManager.addCourse(c);
-			if(dbManager!=null)dbManager.closeDB();
-			Intent ret=new Intent();
+			if (dbManager != null)
+				dbManager.closeDB();
+			Intent ret = new Intent();
 			ret.putExtra("course", c);
 			setResult(1, ret);
 			this.finish();
 			break;
 		}
 	}
-   
+
 	public interface courseContent {
 		public void setCourseContent(int week, int firstCourseNum,
-				int lastCourseNum, String content);
+				int lastCourseNum, Course c);
 	}
 
 }

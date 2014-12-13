@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/main_bg"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="horizontal" >
+
+        <ImageView
+            android:id="@+id/showleft"
+            android:layout_width="@dimen/head_btn_width"
+            android:layout_height="@dimen/head_height"
+            android:layout_centerVertical="true"
+            android:contentDescription="@string/back"
+            android:src="@drawable/top_back" />
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/head_height"
+            android:layout_toRightOf="@+id/showleft"
+            android:gravity="center"
+            android:text="@string/title_book"
+            android:textSize="20sp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1dp"
+        android:layout_marginLeft="@dimen/margin_left"
+        android:layout_marginRight="@dimen/margin_right">
+        <TextView
+            android:id="@+id/booknum"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@+id/onekeyborrow"
+            android:gravity="left|center_vertical"
+            android:textColor="@color/red"
+            android:textSize="@dimen/text_big_size" />
+        <TextView
+            android:id="@+id/onekeyborrow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:background="@color/courseColor"
+            android:gravity="center"
+            android:text="@string/onekey_borrow"
+            android:textSize="@dimen/text_big_size" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/loading"
+        android:layout_width="match_parent"
+        android:layout_height="30dip"
+        android:layout_marginTop="10dip"
+        android:gravity="center" >
+
+        <ProgressBar
+            style="@android:style/Widget.ProgressBar.Inverse"
+            android:layout_width="30.0dip"
+            android:layout_height="30.0dip" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            android:padding="3.0px"
+            android:text="@string/running"
+            android:textColor="#ff000000"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/showbook"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="@dimen/margin_left"
+        android:layout_marginRight="@dimen/margin_right"
+        android:divider="@color/main_bg"
+        android:dividerHeight="@dimen/margin_top" >
+    </ListView>
+
+</LinearLayout>

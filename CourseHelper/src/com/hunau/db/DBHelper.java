@@ -25,8 +25,8 @@ public class DBHelper extends SQLiteOpenHelper {
 		db.execSQL("DROP TABLE IF EXISTS stuinfo");
 		db.execSQL("DROP TABLE IF EXISTS score");
 		db.execSQL("DROP TABLE IF EXISTS rank");
-		db.execSQL("CREATE TABLE course (id INTEGER PRIMARY KEY AUTOINCREMENT,courseName varchar,teacher varchar," +
-				"type  INTEGER,place varchar,courseWeek INTEGER,courseJs INTEGER,courseZc varchar)");
+		db.execSQL("CREATE TABLE course (id INTEGER PRIMARY KEY AUTOINCREMENT,coursename varchar,teacher varchar," +
+				"type  INTEGER,place varchar,courseweek INTEGER,coursejs INTEGER,coursezc varchar)");
 		db.execSQL("CREATE TABLE stuinfo (id INTEGER PRIMARY KEY AUTOINCREMENT,stuname varchar, stunumber varchar,grade REAL)");
 		db.execSQL("CREATE TABLE score (id INTEGER PRIMARY KEY AUTOINCREMENT,courseNo varchar,courseName varchar,xlh varchar, credit REAL,tim varchar," +
 				"usualCredit varchar,finalGrade varchar, grade varchar,examType varchar)");

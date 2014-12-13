@@ -1,7 +1,5 @@
 package com.hunau.imp;
 
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,9 +7,9 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
 
-import android.R.integer;
 import android.content.Context;
 
+import com.hunau.dao.AssessTeacher;
 import com.hunau.dao.BookInfo;
 import com.hunau.dao.Course;
 import com.hunau.dao.Rank;
@@ -22,10 +20,13 @@ import com.hunau.intface.Parse;
 import com.hunau.util.HunauURL;
 
 public class ParseHtml implements Parse {
+	
+	
 	/********************************************************/
 	/* 解析课表********************************************** */
 	/********************************************************/
-	public void AanalysisHtmlCourse(InputStream in, Context context) {
+	
+	public void AanalysisHtmlCourse(String html, Context context) {
 		StuInfo stu = new StuInfo();
 		List<Course> courses = new ArrayList<Course>();
 		Course cou;
@@ -33,12 +34,7 @@ public class ParseHtml implements Parse {
 		DBManager db = new DBManager(context);
 		// ///下面开始解析课表
 		Document doc = null;
-		try {
-			doc = Jsoup.parse(in, "gb2312", "http://www.baidu.com");
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-
+		doc = Jsoup.parse(html );
 		Elements data = doc.select(".td1");
 		if(!data.isEmpty())
 		{
@@ -135,7 +131,7 @@ public class ParseHtml implements Parse {
 			book.setPosition(data.get(i + 6).text());
 			book.setType(data.get(i + 7).text());
 			book.setBortime(data.get(i + 8).text());// 借阅时间
-			book.setRettime(data.get(i + 9).text());
+			book.setRettime(getResult(data.get(i + 9).text()));
 			book.setContime(data.get(i + 10).text());
 			book.setTimes(data.get(i + 11).text());// 续借次数
 			book.setState(data.get(i + 12).text());
@@ -145,16 +141,12 @@ public class ParseHtml implements Parse {
 	}
 
 	@Override
-	public void AanalysisHtmlRank(InputStream in, Context context) {
+	public void AanalysisHtmlRank(String html, Context context) {
 		// TODO Auto-generated method stub
 		List<Rank> ranks=new ArrayList<Rank>();
 		 Rank  sco;
 		Document doc=null;
-		try {
-			doc = Jsoup.parse(in,"GBK","http://www.baidu.com");
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		doc = Jsoup.parse(html);
 		Elements data =doc.select(".td_biaogexian >p");
 		int len=data.size();
 		for(int i=0;i<len;i+=7)
@@ -175,16 +167,13 @@ public class ParseHtml implements Parse {
 		if(db!=null)db.closeDB();
 	}
 	@Override
-	public void AanalysisHtmlScore(InputStream in, Context context) {
+	public void AanalysisHtmlScore(String html, Context context) {
 		// TODO Auto-generated method stub
 		List<Score> scores = new ArrayList<Score>();
 		Score sco;
 		Document doc=null;
-		try {
-			doc = Jsoup.parse(in, "gb2312", "http://www.baidu.com");
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		doc = Jsoup.parse(html);
+		
 		Elements data = doc.select(".td_biaogexian >p");
 		String temp;
 		int len = data.size();
@@ -230,5 +219,27 @@ public class ParseHtml implements Parse {
 		// System.out.println(info);
 		// info="p_pm=20013B1++++++++100002013103188++++++++%B1%E0%D2%EB%D4%AD%C0%ED&p_pm=20022B0++++++++100012013103187++++++++%B2%D9%D7%F7%CF%B5%CD%B3&p_pm=20305B1++++++++100002013103192++++++++%C8%ED%BC%FE%B9%A4%B3%CC&p_pm=20638B3++++++++100002013103196++++++++JAVA%B3%CC%D0%F2%C9%E8%BC%C6%A3%A8%CB%AB%D3%EF%A3%A9&p_pm=40191B1++++++++100002013103181++++++++%CD%F8%C2%E7%B1%E0%B3%CC%BC%BC%CA%F5%BF%CE%B3%CC%C9%E8%BC%C6";
 		return info;
+	}
+
+	@Override
+	public List<AssessTeacher> AanalysisHtmlAssessTeacher(String html ) {
+		// TODO Auto-generated method stub
+		List<AssessTeacher> list=new ArrayList<AssessTeacher>();
+		Document doc=Jsoup.parse(html);
+		Elements es_trs=doc.getElementsByAttributeValue("bgcolor", "#F2EDF8");
+		 for(int i=0;i<es_trs.size();i++)
+		 {
+			 Elements es_tds=es_trs.get(i).getElementsByTag("td");
+				 AssessTeacher cpj=
+				new AssessTeacher(es_tds.get(0).text(),
+						es_tds.get(1).text(),
+						es_tds.get(2).text(),
+						es_tds.get(3).text(),
+						es_tds.get(4).getElementsByTag("a").get(0).absUrl("href"), 
+						i+"");
+				// System.out.println(cpj);
+				 list.add(cpj);
+		 }
+		return list;
 	}
 }

@@ -47,14 +47,16 @@ public class DBManager {
 		List<Course> courses = new ArrayList<Course>();
 		Course cou;
 		Cursor c = db.query("course", null, null, null, null, null,
-				"courseJs asc,courseWeek asc");
+				"coursejs asc,courseweek asc");
 		while (c.moveToNext()) {
 			cou = new Course();
-			cou.setCourseName(c.getString(c.getColumnIndex("courseName")));
+		    cou.setId(c.getInt(c.getColumnIndex("id")));
+			cou.setCourseName(c.getString(c.getColumnIndex("coursename")));
 			cou.setTeacher(c.getString(c.getColumnIndex("teacher")));
-			cou.setCourseJs(c.getInt(c.getColumnIndex("courseJs")));
-			cou.setCourseWeek(c.getInt(c.getColumnIndex("courseWeek")));
-			cou.setCourseZc(c.getString(c.getColumnIndex("courseZc")));
+			cou.setType(c.getInt(c.getColumnIndex("type")));
+			cou.setCourseJs(c.getInt(c.getColumnIndex("coursejs")));
+			cou.setCourseWeek(c.getInt(c.getColumnIndex("courseweek")));
+			cou.setCourseZc(c.getString(c.getColumnIndex("coursezc")));
 			cou.setPlace(c.getString(c.getColumnIndex("place")));
 			courses.add(cou);
 		}
@@ -63,8 +65,8 @@ public class DBManager {
 	}
 	public boolean UpdateCourse(Course c) {
 		db.execSQL(
-				"UPDATE course set courseName=?,teacher=?,type=?,place=?"
-				+ "courseWeek =?,courseJs=?,courseZc=? where id=?",
+				"UPDATE course set coursename=?,teacher=?,type=?,place=?,"
+				+ "courseweek =?,coursejs=?,coursezc=? where id=?",
 				new Object[] { c.getCourseName(), c.getTeacher(),
 						c.getType(), c.getPlace(), c.getCourseWeek(),
 						c.getCourseJs(), c.getCourseZc(),c.getId() });

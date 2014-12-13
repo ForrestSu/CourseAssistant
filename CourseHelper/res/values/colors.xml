@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <color name="courseNow">#39D3AD</color>
+    
+    <color name="courseColor">#39D3AD</color>
     <color name="courseNot">#F2F1ED</color>
+    <color name="title_background">#31CFDE</color>
+    
+    <!-- 边框颜色 -->
+    <color name="border_color">#B5B2B5</color>
     
     <color name="main_bg">#F2F1ED</color>
     <color name="white">#FFFFFF</color>
@@ -15,6 +20,7 @@
     <color name="black">#000000</color>
     <color name="green">#008000</color>
     <color name="yellow">#FFFF00</color>
+    <color name="red">#FF0000</color>
     <color name="grayshallow">#A9A9A9</color>
     <color name="gray">#808080</color>
     <color name="graydeep">#696969</color>

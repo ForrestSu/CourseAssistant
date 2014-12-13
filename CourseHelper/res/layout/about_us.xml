@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_color"
+    android:orientation="vertical"
+    android:paddingBottom="5dp"
+    android:paddingLeft="5dp"
+    android:paddingRight="5dp" >
+
+    <RelativeLayout
+        android:id="@+id/RelativeLayout001"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/main_bg"
+        android:orientation="horizontal" >
+
+        <ImageView
+            android:id="@+id/showleft"
+            android:layout_width="@dimen/head_btn_width"
+            android:layout_height="@dimen/head_height"
+            android:layout_centerVertical="true"
+            android:contentDescription="@string/back"
+            android:src="@drawable/top_back" />
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:text="@string/title_about_us"
+            android:textSize="20sp" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/bg_color"
+        android:orientation="vertical"
+        android:paddingBottom="5dp"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp" >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_above="@+id/discrition"
+                android:src="@drawable/logo" />
+
+            <TextView
+                android:id="@+id/discrition"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:gravity="left"
+                android:text="@string/thanks_every_one"
+                android:textSize="@dimen/text_middle_size" />
+
+            <TextView
+                android:id="@+id/declear1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/discrition"
+                android:gravity="left"
+                android:text="@string/declear1"
+                android:textColor="@color/graydeep"
+                android:textSize="@dimen/text_small_size" />
+
+            <TextView
+                android:id="@+id/declear2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/declear1"
+                android:gravity="center"
+                android:textColor="@color/graydeep"
+                android:text="@string/declear2"
+                android:textSize="@dimen/text_small_size" />
+            
+             <TextView
+                android:id="@+id/version"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_above="@+id/author"
+                android:text="@string/version"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/text_small_size" />
+            <TextView
+                android:id="@+id/author"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:gravity="center"
+                android:text="@string/author"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/text_small_size" />
+        </RelativeLayout>
+    </LinearLayout>
+
+</LinearLayout>

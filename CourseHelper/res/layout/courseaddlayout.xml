@@ -5,44 +5,36 @@
     android:background="@color/main_bg"
     android:orientation="vertical" >
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/main_bg"
+        android:background="@drawable/btnlistselector"
         android:orientation="horizontal" >
-
-        <FrameLayout
+        <ImageView
+            android:id="@+id/courseAddCancel"
             android:layout_width="@dimen/head_btn_width"
-            android:layout_height="@dimen/head_height" >
-
-            <ImageView
-                android:id="@+id/courseAddCancel"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:scaleType="fitXY"
-                android:src="@drawable/cancel" />
-        </FrameLayout>
+            android:layout_height="@dimen/head_height"
+            android:layout_alignParentLeft="true"
+            android:contentDescription="@string/back"
+            android:src="@drawable/top_cancel" />
 
         <TextView
+            android:id="@+id/title"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="#ffffff"
-            android:gravity="center"
-            android:text="编辑资料" />
-
-        <FrameLayout
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:text="@string/title_add_course"
+            android:textSize="20sp" />
+        <ImageView
+            android:id="@+id/courseAddOk"
             android:layout_width="@dimen/head_btn_width"
-            android:layout_height="@dimen/head_height" >
-
-            <ImageView
-                android:id="@+id/courseAddOk"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:scaleType="fitXY"
-                android:src="@drawable/ok" />
-        </FrameLayout>
-    </LinearLayout>
+            android:layout_height="@dimen/head_height"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:contentDescription="@string/back"
+            android:src="@drawable/top_ok" />
+    </RelativeLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -59,7 +51,6 @@
             android:orientation="vertical" >
 
             <RelativeLayout
-                android:id="@+id/mainListMsg"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/btnlistselector"
