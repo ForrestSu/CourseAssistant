@@ -4,10 +4,13 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import com.hunau.activity.MyBookBorrowActivity;
 import com.hunau.coursehelper.R;
 import com.hunau.dao.AssessTeacher;
+import com.hunau.dao.BookInfo;
 import com.hunau.imp.ParseHtml;
 import com.hunau.intface.Parse;
+import com.hunau.util.Connect_Internet;
 import com.hunau.util.HunauURL;
 import com.hunau.util.Mysharepreference;
 import com.hunau.util.SimuLogin;
@@ -22,24 +25,29 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.View.OnClickListener;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.BaseAdapter;
+import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.AdapterView.OnItemSelectedListener;
 
 public class FragmentAssesssTeacher extends Fragment {
 
 	private Mysharepreference s;
-	private List<AssessTeacher> books;
-	private ListView list;
+	private List<AssessTeacher> questions=new ArrayList<AssessTeacher>();
+	private ListView mlistView;
 	private TextView onekeyBorrow;
 	private SimuLogin l;
 	private LinearLayout vLoad_Layout; // 进度条显示
 	private TextView txt;
-	public static final int No_Name_Pass = -2;
-	public static final int Network_Not_Reach = -1;
+	public static final int WRONG = -1;
 	public static final int Success = 0;
 	private static final String[] array={
 		"0000000003","0000000007","0000000011","0000000040","0000000048",
@@ -54,17 +62,17 @@ public class FragmentAssesssTeacher extends Fragment {
 		"老师授课的方式非常适合我们，他根据本课程知识结构的特点，重点突出，层次分明。",
 		"讲授认真，兼有课堂教学，内容丰富以最好的方式使学生接受，吸收知识，教学方式独特，很有吸引力。"
 	};
+    public static String[] left={"被评教师","是否已评"};
+    public static String[] TYPE1= {"优秀", "良好","一般" , "较差" };
+    public static String[] TYPE2= {"已评"};
+    public static String[] VALUE={"1.0","0.8","0.6","0.4"};
 	private  Handler handler = new Handler() {
 		@Override
 		public void handleMessage(Message msg) {
 			switch (msg.what) {
-			case No_Name_Pass:
+			case WRONG:
 				vLoad_Layout.setVisibility(View.GONE);// 隐藏进度条
-				txt.setText((String)msg.obj);
-				break;
-			case Network_Not_Reach:
-				vLoad_Layout.setVisibility(View.GONE);// 隐藏进度条
-				txt.setText("无法访问综合服务系统");
+				txt.setText(msg.obj.toString());
 				break;
 			case Success:
 				vLoad_Layout.setVisibility(View.GONE);// 隐藏进度条
@@ -88,7 +96,7 @@ public class FragmentAssesssTeacher extends Fragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-		View view = inflater.inflate(R.layout.assessteacher, null);
+		View view = inflater.inflate(R.layout.my_assess, null);
 	 return view;
 	}
 	@Override
@@ -96,7 +104,7 @@ public class FragmentAssesssTeacher extends Fragment {
 		// TODO Auto-generated method stub
 		super.onActivityCreated(savedInstanceState);
 		View view=getView();
-		list = (ListView) view.findViewById(R.id.showbook);
+		mlistView = (ListView) view.findViewById(R.id.showbook);
 
 		vLoad_Layout = (LinearLayout) view.findViewById(R.id.loading);
 		vLoad_Layout.setVisibility(View.INVISIBLE);
@@ -116,10 +124,17 @@ public class FragmentAssesssTeacher extends Fragment {
 		if(name==null||pass==null)
 		{
 			Message msg=new Message();
-			msg.what=No_Name_Pass;
-			msg.obj="账号或者密码错";
+			msg.what=WRONG;
+			msg.obj="请先登录";
 			handler.sendMessage(msg);
-		}else {
+		}else if(Connect_Internet.isConnect(getActivity())==false)
+		{
+			Message msg=new Message();
+			msg.what=WRONG;
+			msg.obj="请连接网络";
+			handler.sendMessage(msg);
+		}
+		else{
 			LoginSuccess(name,pass);
 		}
 	}
@@ -136,21 +151,24 @@ public class FragmentAssesssTeacher extends Fragment {
 				String html = l.login(HunauURL.LOGIN[0], sendmsg,true);
 				if(l.isLoginFail(html, "错误"))
 				{
-					msg.what=No_Name_Pass;
+					msg.what=WRONG;
 					msg.obj="账号或者密码错";
 					handler.sendMessage(msg);
+					return;
+			
 				}
 				l.login(url[0], null, false);//不要保存这个session
 			    html=l.login(url[1], null, false);//这里用的是登陆的session
 				if(html==null){
-					msg.what=Network_Not_Reach;
+					msg.what=WRONG;
+					msg.obj="无法访问综合服务系统";
 					handler.sendMessage(msg);
 					return ;
 				}
 				Parse ph = new ParseHtml();
-				books = ph.AanalysisHtmlAssessTeacher(html);
+				questions = ph.AanalysisHtmlAssessTeacher(html);
 				msg.what=Success;
-				msg.arg1=(books==null?0:books.size());
+				msg.arg1=(questions==null?0:questions.size());
 				handler.sendMessage(msg);
 			}
 		};
@@ -159,28 +177,71 @@ public class FragmentAssesssTeacher extends Fragment {
 
 	private void showBookList() {
 		// 绑定XML中的ListView，作为Item的容器
-
-		ArrayList<HashMap<String, String>> lists = new ArrayList<HashMap<String, String>>();
-		for (AssessTeacher b : books) {
-			HashMap<String, String> map = new HashMap<String, String>();
-			map.put("tv1", b.getCourseName());
-			map.put("tv2", b.toString());
-			lists.add(map);
-		}
-		// 生成适配器，数组===》ListItem
-		SimpleAdapter mSchedule = new SimpleAdapter(getActivity(), // 没什么解释
-				lists,// 数据来源
-				R.layout.book_content,// ListItem的XML实现
-
-				// 动态数组与ListItem对应的子项
-				new String[] { "tv1", "tv2" },
-
-				// ListItem的XML文件里面的两个TextView ID
-				new int[] { R.id.tv1, R.id.tv2 });
-		// 添加并且显示
-		list.setAdapter(mSchedule);
+				if (questions == null || questions.size() == 0)return;
+				mlistView.setAdapter(adapter);
 	}
+	private BaseAdapter adapter = new BaseAdapter() {
+		@Override
+		public View getView(int position, View convertView, ViewGroup parent) {
+			
+			View view = LayoutInflater.from(getActivity()).inflate(
+					R.layout.my_assess_item_layout, null);
+		final	AssessTeacher b=questions.get(position);
+			((TextView)view.findViewById(R.id.book_name)).setText("  "+b.getCourseName());
+			((TextView)view.findViewById(R.id.serial)).setText(""+(position+1));
+			 //设置好评
+			String[] type=TYPE1;
+			if(b.getStatus().contains("是"))type=TYPE2; 
+				
+			Spinner mspinner=(Spinner)view.findViewById(R.id.value); 
+			ArrayAdapter<String> madapter = new ArrayAdapter<String>(getActivity(),
+						android.R.layout.simple_spinner_item, type);
+				madapter .setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+				mspinner.setAdapter(madapter);
+				mspinner.setOnItemSelectedListener(new OnItemSelectedListener() {
+					@Override
+					public void onItemSelected(AdapterView<?> parent, View view,
+							int position, long id) {
+					 b.setScore(VALUE[position]);
+						//Toast.makeText(getActivity(), "选择了"+TYPE[position], 0).show();
+					}
+					@Override
+					public void onNothingSelected(AdapterView<?> parent) {}
+				});
+			if(b.getStatus().contains("是"))mspinner.setEnabled(false);;
+			//先设置左侧标题
+			GridView title = (GridView) view.findViewById(R.id.left_title);
+			ArrayAdapter<String> leftAdapter = new ArrayAdapter<String>(getActivity(),
+					R.layout.my_book_contentstyle, left);
+			//title.set
+			title.setAdapter(leftAdapter);
+			// 设置右侧内容
+			GridView content = (GridView) view.findViewById(R.id.right_content);
+			String[] right = new String[] {b.getTeacherName(),b.getStatus()};
+			ArrayAdapter<String> rightAdapter  = new ArrayAdapter<String>(getActivity(),
+					R.layout.my_book_contentstyle, right);
+			content.setAdapter(rightAdapter);
+			return view;
+		}
 
+		@Override
+		public int getCount() {
+			// TODO Auto-generated method stub
+			return questions.size();
+		}
+
+		@Override
+		public Object getItem(int position) {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public long getItemId(int position) {
+			// TODO Auto-generated method stub
+			return 0;
+		}
+	};
 	// 一键续借
 	public void OneKeyBorrowAble() {
 		onekeyBorrow.setVisibility(View.VISIBLE);
@@ -193,15 +254,15 @@ public class FragmentAssesssTeacher extends Fragment {
 						int flag = 0, real = 0;
 						String text;
 						AssessTeacher b=new AssessTeacher();
-						if(books!=null)
-						for (int i=0;i<books.size();i++){
+						if(questions!=null)
+						for (int i=0;i<questions.size();i++){
 //							// 这里引用可以改变b所在空间的对象内容
-							 b =books.get(i);
+							 b =questions.get(i);
 							if (b.getStatus().contains("否")) {
 								flag++;
 								//获取一次该问卷
 								l.login(HunauURL.URL_ASSESS_TEACHER_SEND_BEFORE[0]+i,null,false);
-								String sendmsg =getSendMsg("1.0");
+								String sendmsg =getSendMsg(b.getScore());
 								if (null !=l.login(HunauURL.URL_ASSESS_TEACHER_SEND[0]+i,sendmsg, false)) {
 									b.setStatus("是");
 									real++;
@@ -209,12 +270,11 @@ public class FragmentAssesssTeacher extends Fragment {
 							}
 						}
 						if (flag == 0)
-							text = "已全部评教完成";
+							text = "暂无需评价的问卷";
 						else
 							text = flag + "项需评教," + real + "项评教成功";
 						Message msg = new Message();
 						msg.what = 2;
-						msg.arg1 = real;
 						msg.obj = text;
 						handler.sendMessage(msg);
 					}
@@ -223,12 +283,12 @@ public class FragmentAssesssTeacher extends Fragment {
 			}
 		});
 	}
-	public String getSendMsg(String r)
+	public String getSendMsg(String score)
 	{
 		String msg="";
 		for(int i=0;i<array.length;i++)
 		{
-			msg=msg+array[i]+"="+r+"&";
+			msg=msg+array[i]+"="+score+"&";
 		}
 		return msg+"zgpj=+"+getPY()+"&kg=是";
 	}

@@ -7,8 +7,17 @@ public class AssessTeacher {
 	private String courseName;//评估内容
 	private String status;//是否已经评估
 	private String url;
-	public	String order;
-	public AssessTeacher(){}
+	private	String order;
+	private  String score;//评分值 1.0, 0.8 etc
+	public AssessTeacher(){score="1.0";}
+	public String getScore() {
+		return score;
+	}
+
+	public void setScore(String score) {
+		this.score = score;
+	}
+
 	public String getCourseName() {
 		return courseName;
 	}
@@ -18,6 +27,9 @@ public class AssessTeacher {
 	public void setStatus(String status) {
 		this.status = status;
 	}
+	public String getTeacherName() {
+		return teacherName;
+	}
 	public AssessTeacher(String comment, String teacherName, String courseName,
 			String status, String url, String order) {
 		this.comment = comment;
@@ -26,10 +38,5 @@ public class AssessTeacher {
 		this.status = status;
 		this.url = url;
 		this.order = order;
-	}
-	
-	@Override
-	public String toString() {
-		return  "任课教师:"+teacherName+"\n"+ "已评:"+status;
 	}
 }

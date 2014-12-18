@@ -15,6 +15,7 @@ import android.view.Window;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainMenuSlidingActivity extends SlidingFragmentActivity implements
 		OnClickListener {
@@ -35,6 +36,8 @@ public class MainMenuSlidingActivity extends SlidingFragmentActivity implements
 	private RelativeLayout bookLayout;
 	private RelativeLayout aboutusLayout;
 	private RelativeLayout funAssessTeacher;
+	private RelativeLayout funcOther;
+	private RelativeLayout funcQueryPower;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -88,8 +91,12 @@ public class MainMenuSlidingActivity extends SlidingFragmentActivity implements
 		bookLayout = (RelativeLayout) findViewById(R.id.mainPageLibrary);
 		// 关于我们
 		aboutusLayout = (RelativeLayout) findViewById(R.id.mainPageAboutUs);
-
+		//一键评教
 		funAssessTeacher=(RelativeLayout) findViewById(R.id.mainFuncAssessTeacher);
+		//余电查询
+		funcOther=(RelativeLayout) findViewById(R.id.mainFuncOther);
+		//其他
+		funcQueryPower=(RelativeLayout) findViewById(R.id.mainFunPower);
 		
 		userInfoLayout.setOnClickListener(this);
 		coursePageLayout.setOnClickListener(this);
@@ -99,6 +106,8 @@ public class MainMenuSlidingActivity extends SlidingFragmentActivity implements
 		bookLayout.setOnClickListener(this);
 		aboutusLayout.setOnClickListener(this);
 		funAssessTeacher.setOnClickListener(this);
+		funcQueryPower.setOnClickListener(this);
+		funcOther.setOnClickListener(this);
 	}
 
 	public void updateUserInfo() {
@@ -130,16 +139,31 @@ public class MainMenuSlidingActivity extends SlidingFragmentActivity implements
 			showCourseTable();
 			toggle();// 收放效果
 			break;
+		case R.id.mainPageLearnedCourse:
+			//已修课程
+			Toast.makeText(this, "查询已修课程功能正在开发", 0).show();
+			
+			break;
+		case R.id.mainPageGrade:
+			//本期成绩
+			Toast.makeText(this, "查询本期成绩功能正在开发", 0).show();
+			
+			break;
+		case R.id.mainPageRank:
+			//成绩排名
+			Toast.makeText(this, "查询成绩排名功能正在开发", 0).show();
+			
+			break;
 		case R.id.mainPageLibrary:
 			fragment = new FragmentBook();
-			// 重置右边内容
+			// 图书馆
 			getFragmentManager().beginTransaction()
 					.replace(R.id.contanior, fragment).commit();
 			toggle();// 收放效果
 			break;
 		case R.id.mainPageAboutUs:
 			fragment = new FragmentAbout();
-			// 重置右边内容
+			// 关于我们
 			getFragmentManager().beginTransaction()
 					.replace(R.id.contanior, fragment).commit();
 			toggle();// 收放效果
@@ -153,7 +177,16 @@ public class MainMenuSlidingActivity extends SlidingFragmentActivity implements
 					.replace(R.id.contanior, fragment).commit();
 			toggle();// 收放效果
 			break;
-		case R.id.login_logout:
+		
+	 	case R.id.mainFunPower:
+           Toast.makeText(this, "余电查询功能正在开发", 0).show();
+			break;
+	 	case R.id.mainFuncOther:
+	        Toast.makeText(this, "新功能正在开发", 0).show();
+				break;
+				
+		/////////////////////////////////////////////////////		
+	 	case R.id.login_logout:
 			fragment = new FragmentLogin();
 			// 重置右边内容
 			getFragmentManager().beginTransaction()

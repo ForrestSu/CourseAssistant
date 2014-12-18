@@ -4,10 +4,7 @@ package com.hunau.fragment;
 import com.hunau.coursehelper.R;
 import com.hunau.imp.ParseHtml;
 import com.hunau.intface.Parse;
-import com.hunau.util.HunauURL;
-import com.hunau.util.Mysharepreference;
-import com.hunau.util.SimuLogin;
-import com.hunau.util.isConnect_Internet;
+import com.hunau.util.*;
 import com.slidingmenu.main.MainMenuSlidingActivity;
 
 import android.annotation.SuppressLint;
@@ -168,7 +165,7 @@ public class FragmentLogin extends Fragment {
 	}
 
 	public String getSendMsg() {
-		if (!isConnect_Internet.isConnect(getActivity())) {
+		if (!Connect_Internet.isConnect(getActivity())) {
 			state.setText("Ç×£¬Î´Á¬½ÓÍøÂç");
 			return null;
 		}

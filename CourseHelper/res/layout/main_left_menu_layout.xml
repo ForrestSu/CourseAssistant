@@ -286,7 +286,7 @@
             </RelativeLayout>
 
             <RelativeLayout
-                android:id="@+id/mainFuncMap"
+                android:id="@+id/mainFunPower"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -300,7 +300,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/map"
-                    android:text="寝室电费查询" />
+                    android:text="寝室余电查询" />
 
                 <ImageView
                     android:id="@+id/map"
@@ -311,7 +311,7 @@
             </RelativeLayout>
 
             <RelativeLayout
-                android:id="@+id/mainFuncShop"
+                android:id="@+id/mainFuncOther"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -325,7 +325,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/exam"
-                    android:text="考试倒计时" />
+                    android:text="other" />
 
                <ImageView
                     android:id="@+id/exam"

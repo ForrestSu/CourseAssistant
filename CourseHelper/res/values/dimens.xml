@@ -34,6 +34,8 @@
     <!-- 书本项的宽度-->
      <dimen name="book_item_hight">22dp</dimen>
       <dimen name="book_hight">230dp</dimen>
+      <!-- 一份问卷高度 -->
+     <dimen name="assess_hight">46dp</dimen>
     <!-- 行间距 最好用像素表示 -->
     <dimen name="spacing">1px</dimen>
 

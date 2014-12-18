@@ -3,9 +3,7 @@ package com.hunau.fragment;
 
 import com.hunau.activity.MyBookBorrowActivity;
 import com.hunau.coursehelper.R;
-import com.hunau.coursehelper.R.string;
-import com.hunau.util.Mysharepreference;
-import com.hunau.util.isConnect_Internet;
+import com.hunau.util.*;
 import com.slidingmenu.main.MainMenuSlidingActivity;
 
 import android.annotation.SuppressLint;
@@ -84,7 +82,7 @@ public class FragmentBook extends Fragment {
 		});
 	}
 	public boolean getSendMsg() {
-		if (!isConnect_Internet.isConnect(getActivity())) {
+		if (!Connect_Internet.isConnect(getActivity())) {
 			state.setText(getResources().getString(R.string.login_no_network));
 			return false;
 		}
