@@ -3,7 +3,7 @@ CourseAssistant
    This project why reduce ?
    It's one year ago(2013/10/01), I wan't a Convenient tool can get my borrow book record at any time.
    And now,I exactly learned some knowledge about  Android. So I start this project by while learn and search.
-
+![show](./课程助手.png)
 ## 主要实现思路：
   HTTP 模拟登陆校园网，分析提取网页数据.
 ## 作者(Author):
